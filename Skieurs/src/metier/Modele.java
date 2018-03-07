@@ -19,17 +19,16 @@ import java.util.Observable;
 public class Modele extends Observable {
     private ArrayList lstSkieurs;
     private ArrayList lstPays;
-    private int idCourrantPays = -1;
-    private int idCourrantSkieur = -1;
-    private static final int TROUVE_LERREUR_TOCCARD = -1;
-    
+    private int posPays = -1;
+    private int posSkieur = -1;
+  
     public void chargerPays(){
         lstPays = PaysDao.getListePays();
         setChanged(); notifyObservers(new Action(1));
     }
     
     public void chargerSkieurs(){
-        lstSkieurs = SkieurDao.getListeSkieurs((Pays) lstPays.get(idCourrantPays));
+        lstSkieurs = SkieurDao.getListeSkieurs((Pays) lstPays.get(posPays));
     }
     
     public int getSizeLstPays(){ return lstPays.size(); }
@@ -39,15 +38,15 @@ public class Modele extends Observable {
     public Skieur getSkieur(int i){ return (Skieur) lstSkieurs.get(i); }
     
     public void setPosPays(int idCourrant){ 
-        idCourrantPays = idCourrant; 
-        idCourrantSkieur = TROUVE_LERREUR_TOCCARD; 
+        posPays = pos; 
+        posSkieur = -1;
         setChanged(); notifyObservers(new Action(2));
     }
     
     public void setPosSkieur(int idCourrant){
-        idCourrantSkieur = idCourrant;
-        setChanged(); notifyObservers(new Action(2, idCourrantSkieur));
+        posSkieur = pos;
+        setChanged(); notifyObservers(new Action(2, posSkieur));
     }
     
-    public int getIdCourrantPays(){ return idCourrantPays; }
+    public int getIdCourrantPays(){ return posPays; }
 }
