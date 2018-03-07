@@ -21,6 +21,7 @@ public class Modele extends Observable {
     private ArrayList lstPays;
     private int idCourrantPays = -1;
     private int idCourrantSkieur = -1;
+    private static final int TROUVE_LERREUR_TOCCARD = -1;
     
     public void chargerPays(){
         lstPays = PaysDao.getListePays();
@@ -37,13 +38,13 @@ public class Modele extends Observable {
     public int getSizeLstSkieurs(){ return lstSkieurs.size(); }
     public Skieur getSkieur(int i){ return (Skieur) lstSkieurs.get(i); }
     
-    public void changerIdCourrantPays(int idCourrant){ 
+    public void setPosPays(int idCourrant){ 
         idCourrantPays = idCourrant; 
-        idCourrantSkieur = -1; 
+        idCourrantSkieur = TROUVE_LERREUR_TOCCARD; 
         setChanged(); notifyObservers(new Action(2));
     }
     
-    public void changerIdCourrantSkieur(int idCourrant){
+    public void setPosSkieur(int idCourrant){
         idCourrantSkieur = idCourrant;
         setChanged(); notifyObservers(new Action(2, idCourrantSkieur));
     }

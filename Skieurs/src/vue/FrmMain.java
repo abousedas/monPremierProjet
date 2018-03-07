@@ -119,11 +119,11 @@ public class FrmMain extends java.awt.Frame {
     }//GEN-LAST:event_formWindowClosed
 
     private void lstPaysItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lstPaysItemStateChanged
-        modele.changerIdCourrantPays(lstPays.getSelectedIndex());
+        modele.setPosPays(lstPays.getSelectedIndex());
     }//GEN-LAST:event_lstPaysItemStateChanged
 
     private void lstSkieursItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_lstSkieursItemStateChanged
-        modele.changerIdCourrantSkieur(lstSkieurs.getSelectedIndex());
+        modele.setPosSkieur(lstSkieurs.getSelectedIndex());
     }//GEN-LAST:event_lstSkieursItemStateChanged
 
     private void btnSupprimerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSupprimerActionPerformed
